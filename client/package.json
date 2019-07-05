@@ -24,7 +24,7 @@
     "chai": "^4.2.0",
     "chai-immutable": "^1.6.0",
     "jsdom": "^13.2.0",
-    "mocha": "^6.0.2",
+    "mocha": "^6.1.4",
     "react-hot-loader": "^4.7.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
