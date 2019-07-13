@@ -1,6 +1,4 @@
-[
-    "Dominion",
-    "Intrigue",
-    "Prosperity",
-    "Hinterlands"
-]
+[   { "name": "Dominion", "cards": {} }, 
+    { "name": "Intrigue","cards": {} }, 
+    { "name": "Prosperity","cards": {} }, 
+    { "name": "Hinterlands","cards": {} }]

@@ -9,7 +9,7 @@ function addToPair(state, entry) {
   const removeFromList = state.get("decks");
   if (currentPair && currentPair.length < 2) {
     currentPair.push(entry);
-    removeFromList.splice(removeFromList.indexOf(entry), 1);
+    removeFromList.splice(removeFromList.indexOf(entry));
     console.log("add to pair");
     console.log(state);
     return state.merge({
@@ -29,12 +29,12 @@ function addToPair(state, entry) {
   return state;
 }
 
-function removeFromPair(state,entry) {
+function removeFromPair(state, entry) {
   const removeFromPair = state.get("pair");
   removeFromPair.splice(removeFromPair.indexOf(entry), 1);
   state.merge({
     pair: removeFromPair,
-    decks: state.get('decks').push(entry)
+    decks: state.get("decks").push(entry)
   });
   return state;
 }
@@ -52,7 +52,12 @@ function resetVote(state) {
 
 function getDecks(state) {
   const decks = require("./DominionDecks.json");
+  state = state.set("pair", []);
   return state.set("decks", decks);
+}
+
+function randomizeCards(state) {
+  return state;
 }
 
 export default function(state = Map(), action) {
@@ -65,6 +70,8 @@ export default function(state = Map(), action) {
       return addToPair(state, action.entry);
     case "REMOVE_FROM_PAIR":
       return removeFromPair(state, action.entry);
+    case "RANDOMIZE_CARDS":
+      return randomizeCards(state);
     default:
       return state;
   }

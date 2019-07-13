@@ -6,12 +6,14 @@ import { styles } from '../styles';
 import ChooseDeck from './ChooseDeck';
 
 export class DominionRandomizer extends React.PureComponent{
+
   render() {
     return <div style={styles.container}>
       <h1 style={styles.textStyles}>Dominion Game Creator</h1>
       {this.props.showCards ?
         <Winner ref="winner" winner={this.props.winner} /> :
         <ChooseDeck {...this.props} />}
+        <button onClick={() => this.props.randomizecards} hidden={this.props.pair.length == 0}>Create Dominion Game</button>
     </div>;
   }
 }
