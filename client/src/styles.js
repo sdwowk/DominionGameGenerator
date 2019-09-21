@@ -5,7 +5,7 @@ export const styles = {
         flexDirection: 'column',
         justifyContent: 'center',
         backgroundColor: '#2D9CDB',
-        marginTop: 100
+        marginTop: 75
     },
     buttonContainer: {
         margin: 'auto',
@@ -38,10 +38,12 @@ export const styles = {
         borderColor: 'transparent',
         backgroundColor: '#27AE60',
         width: 250,
-        height: 50,
+        height: 125,
         fontSize: 20,
         fontWeight: 'bold',
         fontFamily: 'Arial',
+        marginLeft: 5,
+        marginRight: 5,
         color: '#FFF'
     },
 
@@ -55,17 +57,19 @@ export const styles = {
 
     },
     winner: {
-        backgroundColor: '#F2C94C',
+        backgroundColor: '#cfa855',
+        borderColor: 'transparent',
         margin: 'auto',
         display: 'flex',
-        flexDirection: 'column',
         justifyContent: 'center',
-        paddingLeft: 2,
-        paddingRight: 2,
         borderRadius: 5,
-        marginTop: 100,
+        marginTop: 50,
         width: 310,
         height: 150,
+        fontSize: 20,
+        fontWeight: 'bold',
+        fontFamily: 'Arial',
+        color: '#FFF',
         textAlign: 'center',
     }
 

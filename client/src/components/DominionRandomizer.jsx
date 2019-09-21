@@ -3,7 +3,8 @@ import Winner from './Winner';
 import {connect} from 'react-redux';
 import * as actionCreators from '../action_creators';
 import { styles } from '../styles';
-import ChooseDeck from './ChooseDeck';
+import Choices from './Choices';
+import PairDisplay from './PairDisplay';
 
 export class DominionRandomizer extends React.PureComponent{
 
@@ -12,8 +13,9 @@ export class DominionRandomizer extends React.PureComponent{
       <h1 style={styles.textStyles}>Dominion Game Creator</h1>
       {this.props.showCards ?
         <Winner ref="winner" winner={this.props.winner} /> :
-        <ChooseDeck {...this.props} />}
-        <button onClick={() => this.props.randomizecards} hidden={this.props.pair.length == 0}>Create Dominion Game</button>
+        <Choices {...this.props} />}
+      {this.props.pair.length > 0 ? <PairDisplay {...this.props}/>: null}
+        <button style={styles.winner} onClick={() => this.props.randomizecards} hidden={this.props.pair.length == 0}>Create Dominion Game</button>
     </div>;
   }
 }
