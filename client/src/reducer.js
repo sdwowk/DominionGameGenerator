@@ -32,7 +32,6 @@ function removeFromPair(state, entry) {
   removeFromPair = removeFromPair.splice(removeFromPair.indexOf(entry), 1);
   return state.merge({
     pair: removeFromPair,
-    pairLength: state.get("pairLength")-1,
     decks: state.get("decks").push(entry)
   });
 }
@@ -51,7 +50,6 @@ function resetVote(state) {
 function getDecks(state) {
   const decks = require("./DominionDecks.json");
   state = state.set("pair", []);
-  state = state.set("pairLength", 0);
   return state.set("decks", decks);
 }
 
