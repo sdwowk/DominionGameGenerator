@@ -10,8 +10,6 @@ function addToPair(state, entry) {
   if (currentPair && currentPair.length < 2) {
     currentPair.push(entry);
     removeFromList = removeFromList.filter(item => item !== entry);
-    console.log(currentPair);
-    console.log(removeFromList);
     return state.merge({
       decks: removeFromList,
       pair: currentPair
@@ -23,16 +21,16 @@ function addToPair(state, entry) {
       pair: [entry]
     });
   }
-  console.log(state);
   return state;
 }
 
 function removeFromPair(state, entry) {
   var removeFromPair = state.get("pair");
+  var addToList = state.get("decks");
   removeFromPair = removeFromPair.splice(removeFromPair.indexOf(entry), 1);
   return state.merge({
     pair: removeFromPair,
-    decks: state.get("decks").push(entry)
+    decks: addToList.push(entry)
   });
 }
 
