@@ -52,7 +52,45 @@ function getDecks(state) {
 }
 
 function randomizeCards(state) {
-  return state;
+  var chosenDecks = state.get("pair");
+  var result = [];
+  console.log(chosenDecks);
+  if (chosenDecks.length == 1) {
+    result.push({ title: "", cards: [] });
+    var cardArray = chosenDecks[0].cards;
+    result[0].title = chosenDecks[0].name;
+    var choice = Math.floor(Math.random() * (cardArray.length - 1));
+    for (var i = 0; i < 10; i++) {
+      result[0].cards.push(cardArray[choice]);
+      cardArray.splice(choice, 1);
+      choice = Math.floor(Math.random() * (cardArray.length - 1));
+    }
+  } else {
+    result.push({ title: "", cards: [] });
+    result.push({ title: "", cards: [] });
+    var cardArray1 = chosenDecks[0].cards;
+    result[0].title = chosenDecks[0].name;
+    var cardArray2 = chosenDecks[1].cards;
+    result[1].title = chosenDecks[1].name;
+    var choice = Math.floor(Math.random() * (cardArray1.length - 1));
+    for (var i = 0; i < 5; i++) {
+      result[0].cards.push(cardArray1[choice]);
+      cardArray1.splice(choice, 1);
+      choice = Math.floor(Math.random() * (cardArray2.length - 1));
+      result[1].cards.push(cardArray2[choice]);
+      cardArray2.splice(choice, 1);
+      choice = Math.floor(Math.random() * (cardArray1.length - 1));
+    }
+  }
+  //Sort the cards alphabetically
+  result.forEach(deck =>
+    deck.cards.sort((a, b) => {
+      return a.title > b.title ? 1 : -1;
+    })
+  );
+  return state.merge({
+    result: result
+  });
 }
 
 export default function(state = Map(), action) {

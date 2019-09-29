@@ -4,16 +4,29 @@ import { styles } from "../styles";
 export default class PairDisplay extends React.PureComponent {
   render() {
     return (
-      <div className="chosen" style={styles.buttonContainer}>
-        {this.props.pair.map(deck => (
+      <div>
+        <div className="chosen" style={styles.buttonContainer}>
+          {this.props.pair.map(deck => (
+            <button
+              key={deck.name}
+              onClick={() => this.props.removeFromPair(deck)}
+              style={styles.buttonStyle}
+            >
+              <h1>{deck.name}</h1>
+            </button>
+          ))}
+        </div>
+        {this.props.pair.length > 0 ? (
           <button
-            key={deck.name}
-            onClick={() => this.props.removeFromPair(deck)}
-            style={styles.buttonStyle}
+            style={styles.winner}
+            onClick={() => {
+              this.props.randomizeCards();
+              window.location.assign("http://localhost:8080/#/results");
+            }}
           >
-            <h1>{deck.name}</h1>
+            Create Dominion Game
           </button>
-        ))}
+        ) : null}
       </div>
     );
   }

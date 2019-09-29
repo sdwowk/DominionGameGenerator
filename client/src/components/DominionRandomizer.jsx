@@ -15,7 +15,6 @@ export class DominionRandomizer extends React.PureComponent{
         <Winner ref="winner" winner={this.props.winner} /> :
         <Choices {...this.props} />}
       {this.props.pair.length > 0 ? <PairDisplay {...this.props}/>: null}
-      {this.props.pair.length > 0 ?  <button style={styles.winner} onClick={this.props.randomizecards} >Create Dominion Game</button> : null}
     </div>;
   }
 }
@@ -28,6 +27,5 @@ function mapStateToProps(state){
         winner: state.get('winner')
     };
 }
-
 
 export const DominionContainer = connect(mapStateToProps, actionCreators)(DominionRandomizer);
