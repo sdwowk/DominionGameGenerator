@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../action_creators";
 import { styles } from "../styles";
+import { ResultCard } from "./ResultCard";
 
 export class Results extends React.PureComponent {
   renderGameView() {
@@ -9,21 +10,14 @@ export class Results extends React.PureComponent {
       return (
         <div>
           <h1 style={styles.textStyles}>Game Order:</h1>
-          <ul
-            key="GameList"
-            style={{ listStyleType: "none", columns: 2}}
-          >
+          <ul key="GameList" style={{ listStyleType: "none", columns: 2 }}>
             {this.props.result[0].cards
               .sort((a, b) => {
                 return a.cost - b.cost;
               })
               .map(card => (
                 <li key={`GL-${card.title}`}>
-                  <div key={card.title + "GL-2"} style={styles.resultContainer}>
-                    <h2 key={card.title + "-3"} style={styles.resultText}>
-                      {card.title + ` - cost: ${card.cost}`}
-                    </h2>
-                  </div>
+                  <ResultCard name={card.title + ` - cost: ${card.cost}`} />
                 </li>
               ))}
           </ul>
@@ -36,21 +30,14 @@ export class Results extends React.PureComponent {
       return (
         <div>
           <h1 style={styles.textStyles}>Game Order:</h1>
-          <ul
-            key="GameList"
-            style={{ listStyleType: "none", columns: 2}}
-          >
+          <ul key="GameList" style={{ listStyleType: "none", columns: 2 }}>
             {cardArray
               .sort((a, b) => {
                 return a.cost - b.cost;
               })
               .map(card => (
                 <li key={`GL-${card.title}`}>
-                  <div key={card.title + "-2"} style={styles.resultContainer}>
-                    <h2 key={card.title + "-3"} style={styles.resultText}>
-                      {card.title + ` - cost: ${card.cost}`}
-                    </h2>
-                  </div>
+                  <ResultCard name={card.title + ` - cost: ${card.cost}`} />
                 </li>
               ))}
           </ul>
@@ -74,15 +61,7 @@ export class Results extends React.PureComponent {
               >
                 {result.cards.map(card => (
                   <li key={card.title}>
-                    <div
-                      key={card.title + "-2"}
-                      className="winner"
-                      style={styles.resultContainer}
-                    >
-                      <h2 key={card.title + "-3"} style={styles.resultText}>
-                        {card.title}
-                      </h2>
-                    </div>
+                    <ResultCard name={card.title} />
                   </li>
                 ))}
               </ul>
