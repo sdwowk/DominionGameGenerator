@@ -16,9 +16,10 @@ export class Results extends React.PureComponent {
                 return a.cost - b.cost;
               })
               .map(card => (
-                <li key={`GL-${card.title}`}>
-                  <ResultCard name={card.title + ` - cost: ${card.cost}`} />
-                </li>
+                <ResultCard
+                  key={`GL-${card.title}`}
+                  name={card.title + ` - cost: ${card.cost}`}
+                />
               ))}
           </ul>
         </div>
@@ -36,9 +37,10 @@ export class Results extends React.PureComponent {
                 return a.cost - b.cost;
               })
               .map(card => (
-                <li key={`GL-${card.title}`}>
-                  <ResultCard name={card.title + ` - cost: ${card.cost}`} />
-                </li>
+                <ResultCard
+                  key={`GL-${card.title}`}
+                  name={card.title + ` - cost: ${card.cost}`}
+                />
               ))}
           </ul>
         </div>
@@ -60,9 +62,7 @@ export class Results extends React.PureComponent {
                 style={{ listStyleType: "none", columns: 2 }}
               >
                 {result.cards.map(card => (
-                  <li key={card.title}>
-                    <ResultCard name={card.title} />
-                  </li>
+                  <ResultCard key={card.title} name={card.title} />
                 ))}
               </ul>
             </div>
