@@ -7,45 +7,29 @@ import { ResultCard } from "./ResultCard";
 export class Results extends React.PureComponent {
   renderGameView() {
     if (this.props.result.length == 1) {
-      return (
-        <div>
-          <h1 style={styles.textStyles}>Game Order:</h1>
-          <ul key="GameList" style={{ listStyleType: "none", columns: 2 }}>
-            {this.props.result[0].cards
-              .sort((a, b) => {
-                return a.cost - b.cost;
-              })
-              .map(card => (
-                <ResultCard
-                  key={`GL-${card.title}`}
-                  name={card.title + ` - cost: ${card.cost}`}
-                />
-              ))}
-          </ul>
-        </div>
-      );
+      var cardArray = this.props.result[0].cards;
     } else {
       var cardArray = this.props.result[0].cards.concat(
         this.props.result[1].cards
       );
-      return (
-        <div>
-          <h1 style={styles.textStyles}>Game Order:</h1>
-          <ul key="GameList" style={{ listStyleType: "none", columns: 2 }}>
-            {cardArray
-              .sort((a, b) => {
-                return a.cost - b.cost;
-              })
-              .map(card => (
-                <ResultCard
-                  key={`GL-${card.title}`}
-                  name={card.title + ` - cost: ${card.cost}`}
-                />
-              ))}
-          </ul>
-        </div>
-      );
     }
+    return (
+      <div>
+        <h1 style={styles.textStyles}>Game Order:</h1>
+        <ul key="GameList" style={{ listStyleType: "none", columns: 2 }}>
+          {cardArray
+            .sort((a, b) => {
+              return a.cost - b.cost;
+            })
+            .map(card => (
+              <ResultCard
+                key={`GL-${card.title}`}
+                name={card.title + ` - cost: ${card.cost}`}
+              />
+            ))}
+        </ul>
+      </div>
+    );
   }
   render() {
     return (
