@@ -31,7 +31,7 @@ export const styles = {
         height: 125,
         marginLeft: 5,
         marginRight: 5,
-        textAlign: 'center',
+        textAlign: 'center'
     },
     buttonStyle: {
         borderRadius: 5,
@@ -53,8 +53,7 @@ export const styles = {
         flexDirection: 'column',
         color: '#FFF',
         fontFamily: 'Arial',
-        display: 'inlineblock',
-
+        display: 'inlineblock'
     },
     winner: {
         backgroundColor: '#cfa855',
@@ -70,8 +69,23 @@ export const styles = {
         fontWeight: 'bold',
         fontFamily: 'Arial',
         color: '#FFF',
+        textAlign: 'center'
+    },
+    resultContainer: {
+        backgroundColor: '#27AE60',
+        borderColor: 'transparent',
+        display: 'inline-block',
+        justifyContent: 'center',
+        borderRadius: 5,
+        marginTop: 2,
+        marginLeft: 5,
+        width: 220,
+        height: 40
+    },
+    resultText: {
+        fontSize: 16,
+        fontFamily: 'Arial',
+        color: '#FFF',
         textAlign: 'center',
     }
-
-
 }

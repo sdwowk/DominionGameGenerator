@@ -3,7 +3,7 @@ import { styles } from "../styles";
 
 export default class PairDisplay extends React.PureComponent {
   render() {
-    return (
+    return this.props.pair.length > 0 ? (
       <div>
         <div className="chosen" style={styles.buttonContainer}>
           {this.props.pair.map(deck => (
@@ -28,6 +28,6 @@ export default class PairDisplay extends React.PureComponent {
           </button>
         ) : null}
       </div>
-    );
+    ) : null;
   }
 }

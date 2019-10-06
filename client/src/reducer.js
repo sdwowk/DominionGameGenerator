@@ -27,22 +27,13 @@ function addToPair(state, entry) {
 function removeFromPair(state, entry) {
   var removeFromPair = state.get("pair");
   var addToList = state.get("decks");
-  removeFromPair = removeFromPair.splice(removeFromPair.indexOf(entry), 1);
+  
+  removeFromPair.splice(removeFromPair.indexOf(entry), 1);
+  addToList.push(entry);
   return state.merge({
     pair: removeFromPair,
-    decks: addToList.push(entry)
+    decks: addToList
   });
-}
-
-function resetVote(state) {
-  const removeFromList = state.get("decks");
-  removeFromList.remove(entry);
-  const currentRound = state.get("pair");
-  if (votedForRound !== currentRound) {
-    return state.remove("myVote");
-  } else {
-    return state;
-  }
 }
 
 function getDecks(state) {
@@ -54,7 +45,6 @@ function getDecks(state) {
 function randomizeCards(state) {
   var chosenDecks = state.get("pair");
   var result = [];
-  console.log(chosenDecks);
   if (chosenDecks.length == 1) {
     result.push({ title: "", cards: [] });
     var cardArray = chosenDecks[0].cards;

@@ -5,19 +5,14 @@ export default class Choices extends React.PureComponent {
   getDecks() {
     return this.props.decks || [];
   }
-  getPair() {
-    return this.props.pair || [];
-  }
   isDisabled() {
     return !!this.props.hasChosen;
   }
-  hasVotedFor(entry) {
-    return this.props.pair.includes(entry);
-  }
+
   render() {
     return (
       <div style={styles.container}>
-        <h3 style={styles.textStyles}>Choose 2</h3>
+        <h3 style={styles.textStyles}>Choose your decks:</h3>
         <div className="voting" style={styles.buttonContainer}>
           {this.getDecks().map(entry => (
             <button
@@ -27,9 +22,6 @@ export default class Choices extends React.PureComponent {
               style={styles.chooseButtonStyle}
             >
               <h1>{entry.name}</h1>
-              {this.hasVotedFor(entry) ? (
-                <div className="label">Chosen</div>
-              ) : null}
             </button>
           ))}
         </div>
