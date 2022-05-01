@@ -25,8 +25,13 @@ const Results = (props: { result: Deck[] }) => {
   function renderGameView() {
     if (props.result.length === 1) {
       var cardArray = props.result[0].cards;
+      var events = props.result[0].events;
     } else {
       var cardArray = props.result[0].cards.concat(props.result[1].cards);
+      var events =
+        props.result[0].events && props.result[0].events.length > 0
+          ? props.result[0].events
+          : props.result[1].events;
     }
     return (
       <div>
@@ -43,6 +48,15 @@ const Results = (props: { result: Deck[] }) => {
               />
             ))}
         </ul>
+        {events && events.length > 0 && (
+          <div>
+            <h3 className={styles.textStyles}>Event:</h3>
+            <ResultCard
+              key={`GL-${events[0].title}`}
+              name={`${events[0].title} - cost: ${events[0].cost}`}
+            />
+          </div>
+        )}
       </div>
     );
   }
@@ -64,6 +78,15 @@ const Results = (props: { result: Deck[] }) => {
                 <ResultCard key={card.title} name={card.title} />
               ))}
             </ul>
+            {result.events && result.events.length > 0 && (
+              <div>
+                <h3 className={styles.textStyles}>Event:</h3>
+                <ResultCard
+                  key={result.events[0].title}
+                  name={result.events[0].title}
+                />
+              </div>
+            )}
           </div>
         );
       })}

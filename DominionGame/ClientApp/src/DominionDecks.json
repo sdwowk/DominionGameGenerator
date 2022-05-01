@@ -154,6 +154,28 @@
       { "title": "Treasure Trove", "cost": 5 },
       { "title": "Wine Merchant", "cost": 5 },
       { "title": "Hireling", "cost": 6 }
+    ],
+    "events": [
+      { "title": "Alms", "cost": 0 },
+      { "title": "Borrow", "cost": 0 },
+      { "title": "Quest", "cost": 0 },
+      { "title": "Save", "cost": 1 },
+      { "title": "Scouting Party", "cost": 2 },
+      { "title": "Travelling Fair", "cost": 2 },
+      { "title": "Bonfire", "cost": 3 },
+      { "title": "Expedition", "cost": 3 },
+      { "title": "Ferry", "cost": 3 },
+      { "title": "Plan", "cost": 3 },
+      { "title": "Mission", "cost": 4 },
+      { "title": "Pilgrimage", "cost": 4 },
+      { "title": "Ball", "cost": 5 },
+      { "title": "Raid", "cost": 5 },
+      { "title": "Seaway", "cost": 5 },
+      { "title": "Trade", "cost": 5 },
+      { "title": "Lost Arts", "cost": 6 },
+      { "title": "Training", "cost": 6 },
+      { "title": "Inheritance", "cost": 7 },
+      { "title": "Pathfinding", "cost": 8 }
     ]
   }
 ]

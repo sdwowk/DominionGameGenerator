@@ -5,4 +5,5 @@ export interface Card {
 export interface Deck {
   name: string;
   cards: Card[];
+  events?: Card[];
 }

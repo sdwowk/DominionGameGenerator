@@ -58,9 +58,9 @@ const DominionRandomizer = () => {
   const randomizeCards = () => {
     let chosenDecks = [...chosenPair];
     var result = [];
-    const emptyCardArr: Card[] = [];
+    const emptyCardArr: Card[] = []; 
     if (chosenDecks.length === 1) {
-      result.push({ name: "", cards: emptyCardArr });
+      result.push({ name: "", cards: [...emptyCardArr], events: [...emptyCardArr] });
       var cardArray = chosenDecks[0].cards;
       result[0].name = chosenDecks[0].name;
       var choice = Math.floor(Math.random() * (cardArray.length - 1));
@@ -69,9 +69,15 @@ const DominionRandomizer = () => {
         cardArray.splice(choice, 1);
         choice = Math.floor(Math.random() * (cardArray.length - 1));
       }
+      if (chosenDecks[0].events) {
+        var eventIndex = Math.floor(
+          Math.random() * (chosenDecks[0].events.length - 1)
+        );
+        result[0].events = [chosenDecks[0].events[eventIndex]];
+      }
     } else {
-      result.push({ name: "", cards: emptyCardArr });
-      result.push({ name: "", cards: emptyCardArr });
+      result.push({ name: "", cards: [...emptyCardArr], events: [...emptyCardArr] });
+      result.push({ name: "", cards: [...emptyCardArr], events: [...emptyCardArr] });
       var cardArray1 = chosenDecks[0].cards;
       result[0].name = chosenDecks[0].name;
       var cardArray2 = chosenDecks[1].cards;
@@ -84,6 +90,17 @@ const DominionRandomizer = () => {
         result[1].cards.push(cardArray2[choice]);
         cardArray2.splice(choice, 1);
         choice = Math.floor(Math.random() * (cardArray1.length - 1));
+      }
+      if (chosenDecks[0].events) {
+        var eventIndex = Math.floor(
+          Math.random() * (chosenDecks[0].events.length - 1)
+        );
+        result[0].events = [chosenDecks[0].events[eventIndex]];
+      } else if (chosenDecks[1].events) {
+        var eventIndex = Math.floor(
+          Math.random() * (chosenDecks[1].events.length - 1)
+        );
+        result[1].events = [chosenDecks[1].events[eventIndex]];
       }
     }
     //Sort the cards alphabetically
