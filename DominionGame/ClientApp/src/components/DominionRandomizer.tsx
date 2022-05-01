@@ -58,9 +58,13 @@ const DominionRandomizer = () => {
   const randomizeCards = () => {
     let chosenDecks = [...chosenPair];
     var result = [];
-    const emptyCardArr: Card[] = []; 
+    const emptyCardArr: Card[] = [];
     if (chosenDecks.length === 1) {
-      result.push({ name: "", cards: [...emptyCardArr], events: [...emptyCardArr] });
+      result.push({
+        name: "",
+        cards: [...emptyCardArr],
+        events: [...emptyCardArr],
+      });
       var cardArray = chosenDecks[0].cards;
       result[0].name = chosenDecks[0].name;
       var choice = Math.floor(Math.random() * (cardArray.length - 1));
@@ -76,8 +80,16 @@ const DominionRandomizer = () => {
         result[0].events = [chosenDecks[0].events[eventIndex]];
       }
     } else {
-      result.push({ name: "", cards: [...emptyCardArr], events: [...emptyCardArr] });
-      result.push({ name: "", cards: [...emptyCardArr], events: [...emptyCardArr] });
+      result.push({
+        name: "",
+        cards: [...emptyCardArr],
+        events: [...emptyCardArr],
+      });
+      result.push({
+        name: "",
+        cards: [...emptyCardArr],
+        events: [...emptyCardArr],
+      });
       var cardArray1 = chosenDecks[0].cards;
       result[0].name = chosenDecks[0].name;
       var cardArray2 = chosenDecks[1].cards;
