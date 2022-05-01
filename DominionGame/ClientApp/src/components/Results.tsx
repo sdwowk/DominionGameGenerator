@@ -20,15 +20,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const Results = (props: {result: Deck[]}) => {
+const Results = (props: { result: Deck[] }) => {
   const styles = useStyles();
   function renderGameView() {
-    if (props.result.length == 1) {
+    if (props.result.length === 1) {
       var cardArray = props.result[0].cards;
     } else {
-      var cardArray = props.result[0].cards.concat(
-        props.result[1].cards
-      );
+      var cardArray = props.result[0].cards.concat(props.result[1].cards);
     }
     return (
       <div>
@@ -38,7 +36,7 @@ const Results = (props: {result: Deck[]}) => {
             .sort((a, b) => {
               return a.cost - b.cost;
             })
-            .map(card => (
+            .map((card) => (
               <ResultCard
                 key={`GL-${card.title}`}
                 name={card.title + ` - cost: ${card.cost}`}
@@ -48,30 +46,29 @@ const Results = (props: {result: Deck[]}) => {
       </div>
     );
   }
-    return (
-      <div>
-        <h1 className={styles.textStyles}>Box Order (A-Z):</h1>
-        {props.result.map(result => {
-          return (
-            <div key={result.name + "-0"}>
-              <h2 key={result.name + "-1"} className={styles.textStyles}>{`${
-                result.name
-              }:`}</h2>
-              <ul
-                key={result.name + "-2"}
-                style={{ listStyleType: "none", columns: 2 }}
-              >
-                {result.cards.map(card => (
-                  <ResultCard key={card.title} name={card.title} />
-                ))}
-              </ul>
-            </div>
-          );
-        })}
-        {renderGameView()}
-      </div>
-    );
-  
-}
+  return (
+    <div>
+      <h1 className={styles.textStyles}>Box Order (A-Z):</h1>
+      {props.result.map((result) => {
+        return (
+          <div key={result.name + "-0"}>
+            <h2
+              key={result.name + "-1"}
+              className={styles.textStyles}
+            >{`${result.name}:`}</h2>
+            <ul
+              key={result.name + "-2"}
+              style={{ listStyleType: "none", columns: 2 }}
+            >
+              {result.cards.map((card) => (
+                <ResultCard key={card.title} name={card.title} />
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+      {renderGameView()}
+    </div>
+  );
+};
 export default Results;
-

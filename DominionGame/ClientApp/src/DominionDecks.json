@@ -120,5 +120,40 @@
       { "title": "Border Village", "cost": 6 },
       { "title": "Farmland", "cost": 6 }
     ]
+  },
+  {
+    "name": "Adventures",
+    "cards": [
+      { "title": "Coin of the Realm", "cost": 2 },
+      { "title": "Page", "cost": 2 },
+      { "title": "Peasant", "cost": 2 },
+      { "title": "Ratcatcher", "cost": 2 },
+      { "title": "Raze", "cost": 2 },
+      { "title": "Amulet", "cost": 3 },
+      { "title": "Caravan Guard", "cost": 3 },
+      { "title": "Dungeon", "cost": 3 },
+      { "title": "Gear", "cost": 3 },
+      { "title": "Guide", "cost": 3 },
+      { "title": "Duplicate", "cost": 4 },
+      { "title": "Magpie", "cost": 4 },
+      { "title": "Messenger", "cost": 4 },
+      { "title": "Miser", "cost": 4 },
+      { "title": "Port", "cost": 4 },
+      { "title": "Ranger", "cost": 4 },
+      { "title": "Ranger", "cost": 4 },
+      { "title": "Artificer", "cost": 5 },
+      { "title": "Bridge Troll", "cost": 5 },
+      { "title": "Distant Lands", "cost": 5 },
+      { "title": "Giant", "cost": 5 },
+      { "title": "Haunted Woods", "cost": 5 },
+      { "title": "Lost City", "cost": 5 },
+      { "title": "Relic", "cost": 5 },
+      { "title": "Royal Carriage", "cost": 5 },
+      { "title": "Storyteller", "cost": 5 },
+      { "title": "Swamp Hag", "cost": 5 },
+      { "title": "Treasure Trove", "cost": 5 },
+      { "title": "Wine Merchant", "cost": 5 },
+      { "title": "Hireling", "cost": 6 }
+    ]
   }
 ]

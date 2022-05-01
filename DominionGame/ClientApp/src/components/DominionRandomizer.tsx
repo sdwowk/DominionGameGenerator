@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const DominionRandomizer = () => {
   const styles = useStyles();
-  console.log(dominionDecks);
   const [decks, setDecks] = useState<Deck[]>(dominionDecks);
   const [hasChosen, setChosen] = useState<boolean>(false);
   const [chosenPair, setChosenPair] = useState<Deck[]>([]);
@@ -60,7 +59,7 @@ const DominionRandomizer = () => {
     let chosenDecks = [...chosenPair];
     var result = [];
     const emptyCardArr: Card[] = [];
-    if (chosenDecks.length == 1) {
+    if (chosenDecks.length === 1) {
       result.push({ name: "", cards: emptyCardArr });
       var cardArray = chosenDecks[0].cards;
       result[0].name = chosenDecks[0].name;
@@ -117,7 +116,7 @@ const DominionRandomizer = () => {
       )}
       {showResults && (
         <>
-          <Results result={results}/>
+          <Results result={results} />
         </>
       )}
     </Container>

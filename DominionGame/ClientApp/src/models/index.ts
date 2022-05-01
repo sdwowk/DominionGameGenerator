@@ -1,9 +1,8 @@
 export interface Card {
-    title: string;
-    cost: number;
+  title: string;
+  cost: number;
 }
 export interface Deck {
-    name: string;
-    cards: Card[];
+  name: string;
+  cards: Card[];
 }
-

@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontFamily: "Arial",
     color: "#FFF",
     textAlign: "center",
-  }
+  },
 }));
 
 const PairDisplay = (props: {
@@ -66,7 +66,7 @@ const PairDisplay = (props: {
           className={styles.winner}
           onClick={() => {
             props.randomizeCards();
-            props.setShowResults(true)
+            props.setShowResults(true);
           }}
         >
           Create Dominion Game
