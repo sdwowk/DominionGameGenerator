@@ -2,23 +2,11 @@ import { useState } from "react";
 import { type Card, type Deck } from "../models";
 import Choices from "./Choices";
 import PairDisplay from "./PairDisplay";
-import { AppShell, createTheme, Typography } from "@mantine/core";
+import { AppShell } from "@mantine/core";
 import fileDecks from "../DominionDecks.json";
 import Results from "./Results";
 
 export const dominionDecks = fileDecks;
-
-const theme = createTheme({
-  components: {
-    AppShell: {
-      styles: {
-        main: {
-          backgroundColor: "#e6f7ff", // light blue background
-        },
-      },
-    },
-  },
-});
 
 const DominionRandomizer = () => {
   const [decks, setDecks] = useState<Deck[]>(dominionDecks);
@@ -57,6 +45,7 @@ const DominionRandomizer = () => {
         name: "",
         cards: [...emptyCardArr],
         events: [...emptyCardArr],
+        landmarks: [] as string[],
       });
       var cardArray = chosenDecks[0].cards;
       result[0].name = chosenDecks[0].name;
@@ -72,16 +61,35 @@ const DominionRandomizer = () => {
         );
         result[0].events = [chosenDecks[0].events[eventIndex]];
       }
+      if (chosenDecks[0].landmarks) {
+        var landmark1Index = Math.floor(
+          Math.random() * (chosenDecks[0].landmarks.length - 1)
+        );
+        var landmark2Index = Math.floor(
+          Math.random() * (chosenDecks[0].landmarks.length - 1)
+        );
+        while (landmark1Index === landmark2Index) {
+          landmark2Index = Math.floor(
+            Math.random() * (chosenDecks[0].landmarks.length - 1)
+          );
+        }
+        result[0].landmarks = [
+          chosenDecks[0].landmarks[landmark1Index],
+          chosenDecks[0].landmarks[landmark2Index],
+        ];
+      }
     } else {
       result.push({
         name: "",
         cards: [...emptyCardArr],
         events: [...emptyCardArr],
+        landmarks: [] as string[],
       });
       result.push({
         name: "",
         cards: [...emptyCardArr],
         events: [...emptyCardArr],
+        landmarks: [] as string[],
       });
       var cardArray1 = chosenDecks[0].cards;
       result[0].name = chosenDecks[0].name;
@@ -107,6 +115,39 @@ const DominionRandomizer = () => {
         );
         result[1].events = [chosenDecks[1].events[eventIndex]];
       }
+      if (chosenDecks[0].landmarks) {
+        var landmark1Index = Math.floor(
+          Math.random() * (chosenDecks[0].landmarks.length - 1)
+        );
+        var landmark2Index = Math.floor(
+          Math.random() * (chosenDecks[0].landmarks.length - 1)
+        );
+        while (landmark1Index === landmark2Index) {
+          landmark2Index = Math.floor(
+            Math.random() * (chosenDecks[0].landmarks.length - 1)
+          );
+        }
+        result[0].landmarks = [
+          chosenDecks[0].landmarks[landmark1Index],
+          chosenDecks[0].landmarks[landmark2Index],
+        ];
+      } else if (chosenDecks[1].landmarks) {
+        var landmark1Index = Math.floor(
+          Math.random() * (chosenDecks[1].landmarks.length - 1)
+        );
+        var landmark2Index = Math.floor(
+          Math.random() * (chosenDecks[1].landmarks.length - 1)
+        );
+        while (landmark1Index === landmark2Index) {
+          landmark2Index = Math.floor(
+            Math.random() * (chosenDecks[1].landmarks.length - 1)
+          );
+        }
+        result[1].landmarks = [
+          chosenDecks[1].landmarks[landmark1Index],
+          chosenDecks[1].landmarks[landmark2Index],
+        ];
+      }
     }
     //Sort the cards alphabetically
     result.forEach((deck) =>
@@ -122,9 +163,7 @@ const DominionRandomizer = () => {
     <AppShell>
       <AppShell.Header>
         <div className="appContainer">
-          <Typography variant="h1" className="textStyles">
-            Dominion Game Creator
-          </Typography>
+          <h1 className="textStyles">Dominion Game Creator</h1>
         </div>
       </AppShell.Header>
       <AppShell.Main>

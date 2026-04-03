@@ -6,4 +6,5 @@ export interface Deck {
   name: string;
   cards: Card[];
   events?: Card[];
+  landmarks?: string[];
 }

@@ -6,12 +6,17 @@ const Results = (props: { result: Deck[] }) => {
     if (props.result.length === 1) {
       var cardArray = props.result[0].cards;
       var events = props.result[0].events;
+      var landmarks = props.result[0].landmarks;
     } else {
       var cardArray = props.result[0].cards.concat(props.result[1].cards);
       var events =
         props.result[0].events && props.result[0].events.length > 0
           ? props.result[0].events
           : props.result[1].events;
+      var landmarks =
+        props.result[0].landmarks && props.result[0].landmarks.length > 0
+          ? props.result[0].landmarks
+          : props.result[1].landmarks;
     }
     return (
       <div>
@@ -35,6 +40,14 @@ const Results = (props: { result: Deck[] }) => {
               key={`GL-${events[0].title}`}
               name={`${events[0].title} - cost: ${events[0].cost}`}
             />
+          </div>
+        )}
+        {landmarks && landmarks.length > 0 && (
+          <div>
+            <h3 className="textStyles">Landmarks:</h3>
+            {landmarks.map((landmark) => (
+              <ResultCard key={`GL-${landmark}`} name={`${landmark}`} />
+            ))}
           </div>
         )}
       </div>
@@ -65,6 +78,15 @@ const Results = (props: { result: Deck[] }) => {
                   key={result.events[0].title}
                   name={result.events[0].title}
                 />
+              </div>
+            )}
+            {result.landmarks && result.landmarks.length > 0 && (
+              <div>
+                <h3 className="textStyles">Landmarks:</h3>
+
+                {result.landmarks.map((landmark) => (
+                  <ResultCard key={`GL-${landmark}`} name={`${landmark}`} />
+                ))}
               </div>
             )}
           </div>
