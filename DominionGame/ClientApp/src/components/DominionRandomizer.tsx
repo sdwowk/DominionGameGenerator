@@ -1,33 +1,26 @@
-import React, { useState } from "react";
-import { Card, Deck } from "../models";
+import { useState } from "react";
+import { type Card, type Deck } from "../models";
 import Choices from "./Choices";
 import PairDisplay from "./PairDisplay";
-import { Container, Typography, Theme, makeStyles } from "@material-ui/core";
+import { AppShell, createTheme, Typography } from "@mantine/core";
 import fileDecks from "../DominionDecks.json";
 import Results from "./Results";
 
 export const dominionDecks = fileDecks;
 
-const useStyles = makeStyles((theme: Theme) => ({
-  container: {
-    margin: "auto",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    backgroundColor: "#2D9CDB",
-    marginTop: 75,
+const theme = createTheme({
+  components: {
+    AppShell: {
+      styles: {
+        main: {
+          backgroundColor: "#e6f7ff", // light blue background
+        },
+      },
+    },
   },
-  textStyles: {
-    margin: "auto",
-    display: "flex",
-    msflexDirection: "column",
-    color: "#FFF",
-    fontFamily: "Arial",
-  },
-}));
+});
 
 const DominionRandomizer = () => {
-  const styles = useStyles();
   const [decks, setDecks] = useState<Deck[]>(dominionDecks);
   const [hasChosen, setChosen] = useState<boolean>(false);
   const [chosenPair, setChosenPair] = useState<Deck[]>([]);
@@ -126,29 +119,39 @@ const DominionRandomizer = () => {
   };
 
   return (
-    <Container className={styles.container}>
-      {!showResults && (
-        <>
-          <Typography variant="h1" className={styles.textStyles}>
+    <AppShell>
+      <AppShell.Header>
+        <div className="appContainer">
+          <Typography variant="h1" className="textStyles">
             Dominion Game Creator
           </Typography>
-          <Choices addToPair={addToPair} decks={decks} hasChosen={hasChosen} />
-          {chosenPair.length > 0 ? (
-            <PairDisplay
-              pair={chosenPair}
-              setShowResults={setShowResults}
-              randomizeCards={randomizeCards}
-              removeFromPair={removeFromPair}
+        </div>
+      </AppShell.Header>
+      <AppShell.Main>
+        {!showResults && (
+          <>
+            <Choices
+              addToPair={addToPair}
+              decks={decks}
+              hasChosen={hasChosen}
             />
-          ) : null}
-        </>
-      )}
-      {showResults && (
-        <>
-          <Results result={results} />
-        </>
-      )}
-    </Container>
+            {chosenPair.length > 0 ? (
+              <PairDisplay
+                pair={chosenPair}
+                setShowResults={setShowResults}
+                randomizeCards={randomizeCards}
+                removeFromPair={removeFromPair}
+              />
+            ) : null}
+          </>
+        )}
+        {showResults && (
+          <>
+            <Results result={results} />
+          </>
+        )}
+      </AppShell.Main>
+    </AppShell>
   );
 };
 
